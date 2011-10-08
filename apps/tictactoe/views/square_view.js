@@ -7,17 +7,12 @@
   @extends SC.View
 */
 Tictactoe.SquareView = SC.LabelView.extend({
-  displayProperties: 'content'.w(),
   classNames: ['squareView'],
-  displayTitle: function() {
-    var value = this.get('content');
-    if (value == 1) {
-      return 'X';
-    }
-    else if (value == 2) {
-      return 'O';
-    }
-
-    return '';
-  }.property('content', 'localize', 'formatter').cacheable()
+	click: function () {
+		Tictactoe.GameController.userMove(this.content);
+	},
+	value: function () {
+		var value = this.content.value;
+		return (value ? value : '');
+	}.property('content.value').cacheable()
 });

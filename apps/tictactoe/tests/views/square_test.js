@@ -13,16 +13,32 @@ module("Tictactoe.SquareView", {
 	}
 });
 
-test("Inner view has the same value of outer view", function() {
-  var squareView = Tictactoe.SquareView.create({content: 1});
+test("Value property returns value of content", function() {
+	var square = Tictactoe.Square.create({content:{position: 0, value: 'X'}});
+  var squareView = Tictactoe.SquareView.create(square);
 	SC.RunLoop.end();
-	equals(squareView.contentView.value, squareView.content, 'The inner view should have the same value as the outer view');
+	equals(squareView.value(), squareView.content.value);
 });
 
-test("Inner view has the same value of outer view after change", function() {
-  var squareView = Tictactoe.SquareView.create({content: 1});
-	squareView.content = 2;
+test("Value property returns value of content after change", function() {
+  var square = Tictactoe.Square.create({content:{position: 0, value: 'X'}});
+  var squareView = Tictactoe.SquareView.create(square);
 	SC.RunLoop.end();
-	equals(squareView.contentView.value, squareView.content, 'The inner view should have the same value as the outer view');
+	SC.RunLoop.begin();
+	squareView.content.value = 'O';
+	SC.RunLoop.end();
+	equals(squareView.value(), squareView.content.value);
+});
+
+test("Click event calls game controller", function() {
+	var positionPassed;
+	var userMoveMock = CoreTest.stub('Tictactoe.GameController.userMove', function (space) {positionPassed = space['position'];});
+	Tictactoe.GameController = SC.ObjectController.create();
+	Tictactoe.GameController.userMove = userMoveMock;
+	var square = Tictactoe.Square.create({content:{position: 0, value: 'X'}});
+  var squareView = Tictactoe.SquareView.create(square);
+	squareView.click();
+	equals(userMoveMock.callCount, 1);
+	equals(positionPassed, 0);
 });
 

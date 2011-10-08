@@ -16,9 +16,9 @@ Tictactoe.BoardView = SC.GridView.extend({
   layout: {
     centerX: 0,
     centerY: 0,
-    width: 300,
-    height: 306
+    width: 325,
+    height: 300
   },
   exampleView: Tictactoe.SquareView,
-  content: [1, 1, 0, 1, 2, 1, 1, 1, 1]
+  contentBinding: 'Tictactoe.BoardController.arrangedObjects'
 });

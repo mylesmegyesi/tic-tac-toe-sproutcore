@@ -24,6 +24,7 @@ Tictactoe.main = function main() {
 
   // TODO: Set the content property on your primary controller
   // ex: Tictactoe.contactsController.set('content',Tictactoe.contacts);
+	
 
 } ;
 

@@ -17,7 +17,7 @@ test("Value property returns value of content", function() {
 	var square = Tictactoe.Square.create({content:{position: 0, value: 'X'}});
   var squareView = Tictactoe.SquareView.create(square);
 	SC.RunLoop.end();
-	equals(squareView.value(), squareView.content.value);
+	equals(squareView.get('value'), squareView.content.value);
 });
 
 test("Value property returns value of content after change", function() {
@@ -27,7 +27,7 @@ test("Value property returns value of content after change", function() {
 	SC.RunLoop.begin();
 	squareView.content.value = 'O';
 	SC.RunLoop.end();
-	equals(squareView.value(), squareView.content.value);
+	equals(squareView.get('value'), squareView.content.value);
 });
 
 test("Click event calls game controller", function() {

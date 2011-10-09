@@ -28,7 +28,7 @@ test("Board view has one object after adding object to the board controller", fu
 	equals(boardView.content.content[0]['value'], 'X');
 });
 
-test("Board view has one object after addi", function() {
+test("Board view updates after changing a square value", function() {
   var boardView = Tictactoe.BoardView.create();
 	var square = SC.Object.create({'position': 0, 'value': 'X'});
 	Tictactoe.BoardController.addObject(square);

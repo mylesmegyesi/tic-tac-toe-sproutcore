@@ -1,2 +1,2 @@
-config :tictactoe, :css_theme => 'tictactoe'
+config :tictactoe, :css_theme => 'tictactoe', :url_prefix => "Tic-Tac-Toe/static"
 

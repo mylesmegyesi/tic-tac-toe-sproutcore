@@ -3,7 +3,8 @@
 Tictactoe.mainPage = SC.Page.design({
 
   mainPane: SC.MainPane.design({
-    childViews: 'boardView'.w(),
+    childViews: 'gameView boardView'.w(),
+		gameView: Tictactoe.GameView.create(),
     boardView: Tictactoe.BoardView.create()
   })
 });

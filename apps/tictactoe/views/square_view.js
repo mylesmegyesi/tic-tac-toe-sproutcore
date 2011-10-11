@@ -1,11 +1,5 @@
 /*globals Tictactoe */
 
-/** @class
-
-  (Document Your View Here)
-
-  @extends SC.View
-*/
 Tictactoe.SquareView = SC.LabelView.extend({
   classNames: ['squareView'],
 	click: function () {

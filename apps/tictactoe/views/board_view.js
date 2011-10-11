@@ -2,12 +2,6 @@
 
 sc_require('views/square_view');
 
-/** @class
-
-  (Document Your View Here)
-
-  @extends SC.View
-*/
 Tictactoe.BoardView = SC.GridView.extend({
 	classNames: ['boardView'],
 	isSelectable: false,

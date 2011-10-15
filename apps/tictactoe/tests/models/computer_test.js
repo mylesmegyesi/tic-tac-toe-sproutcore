@@ -18,13 +18,19 @@ function recurse(board) {
 		}
 		newBoard = board.slice(0);
 		newBoard[i] = Tictactoe.PlayerSymbols.User;
-		newBoard[computer.getNextMove(newBoard)] = Tictactoe.PlayerSymbols.Computer;
-		var gameState = gameHelper.gameState(newBoard);
-		if (gameState != Tictactoe.GameState.Playing) {
-			ok(gameState != Tictactoe.GameState.UserWon, "Draw or Computer won");
+		var firstGameState = gameHelper.gameState(newBoard);
+		if (firstGameState != Tictactoe.GameState.Playing) {
+			ok(firstGameState != Tictactoe.GameState.UserWon, "First Game State");
 		}
 		else {
-			recurse(newBoard);
+			newBoard[computer.getNextMove(newBoard)] = Tictactoe.PlayerSymbols.Computer;
+			var secondGameState = gameHelper.gameState(newBoard);
+			if (secondGameState != Tictactoe.GameState.Playing) {
+				ok(secondGameState != Tictactoe.GameState.UserWon, "Second Game State");
+			}
+			else {
+				recurse(newBoard);
+			}
 		}
 	}
 }

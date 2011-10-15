@@ -5,7 +5,7 @@ sc_require('helpers/game_helper');
 Tictactoe.Computer = SC.Object.extend({
 	helper: Tictactoe.GameHelper.create(),
 	getNextMove: function(board) {
-		var bestScore = -2;
+		var bestScore = null;
 		var bestIndex;
 		var newBoard;
 		for(var i=0; i<9; i++) {
@@ -15,7 +15,7 @@ Tictactoe.Computer = SC.Object.extend({
 			newBoard = board.slice(0);
 			newBoard[i] = Tictactoe.PlayerSymbols.Computer;
 			var score = -this.negamax(newBoard, Tictactoe.PlayerSymbols.User, -1000, 1000);
-			if (score > bestScore) {
+			if (score > bestScore || bestScore === null) {
 				bestScore = score;
 				bestIndex = i;
 			}

@@ -1,2 +1,2 @@
-config :tictactoe, :css_theme => 'tictactoe', :url_prefix => "tic-tac-toe-sproutcore"
+config :tictactoe, :css_theme => 'tictactoe', :url_prefix => "tic-tac-toe-sproutcore/static"
 

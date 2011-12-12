@@ -33,6 +33,6 @@ Tictactoe.GameController = SC.ObjectController.create({
 		if (this.get('isUsersTurn') || this.get('gameState') != Tictactoe.GameState.Playing) {
 			return;
 		}
-		this.board.setIndex(this.computer.getNextMove(this.board.get('values')), Tictactoe.PlayerSymbols.Computer);
+		this.computer.getNextMove(this.board);
 	}.observes('isUsersTurn')
 });
